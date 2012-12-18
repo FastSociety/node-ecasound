@@ -4,37 +4,37 @@
     var aTracks          = [
         {
             name:   'soundtrack',
-            audio:  's.wav',
+            audio:  'soundtrack.wav',
             start:  0,
             length: 60
         },
         {
             name:   'sample0',
-            audio:  '0.wav',
+            audio:  'other.wav',
             start:  1,
             length: 5
         },
         {
             name:   'sample1',
-            audio:  '1.wav',
+            audio:  'other.wav',
             start:  10,
             length: 10
         },
         {
             name:   'sample2',
-            audio:  '2.wav',
+            audio:  'other.wav',
             start:  30,
             length: 10
         },
         {
             name:   'sample3',
-            audio:  '3.wav',
+            audio:  'other.wav',
             start:  41,
             length: 9
         },
         {
             name:   'sample4',
-            audio:  '4.wav',
+            audio:  'other.wav',
             start:  55,
             length: 5
         }
@@ -76,7 +76,7 @@
         oTrack = aTracks[sTrack];
 
         oMixer.addTrack(
-            new Track(oTrack.name, oTrack.audio).play(oTrack.start).until(oTrack.length)
+            new Track(oTrack.name, oTrack.audio).play(oTrack.start).until(oTrack.length).volume(100 * aTracks.length)
         );
 
         var iTrack = parseInt(sTrack, 10);
@@ -108,5 +108,5 @@
         oBackground.fade(0.0, 'me.end - ' + iHalfFade, iHalfFade);
     }
 
-    console.log(oMixer.consoleOutput());
+    console.log('ecasound', oMixer.consoleOutput().command.join(' ').replace('whatever-output-filename-is', 'test2'));
     console.log(oMixer.consoleMixerOutput());
