@@ -75,8 +75,19 @@
     for (var sTrack in aTracks) {
         oTrack = aTracks[sTrack];
 
+        var iTrackFade = iHalfFade;
+        if (oTrack.length < iFadeTime) {
+            iTrackFade = oTrack.length / 3
+        }
+
         oMixer.addTrack(
-            new Track(oTrack.name, oTrack.audio).play(oTrack.start).until(oTrack.length).volume(100 * aTracks.length)
+            new Track(oTrack.name, oTrack.audio)
+                .play(oTrack.start)
+                .until(oTrack.length)
+                .volume(100 * aTracks.length)
+                .fade(0.0, 0)
+                .fade(1.0, iTrackFade)
+                .fade(0.0, iTrackFade, 'me.end - ' + iTrackFade)
         );
 
         var iTrack = parseInt(sTrack, 10);
