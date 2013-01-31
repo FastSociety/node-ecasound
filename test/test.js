@@ -76,8 +76,10 @@
         oTrack = aTracks[sTrack];
 
         var iTrackFade = iHalfFade;
-        if (oTrack.length < iFadeTime) {
-            iTrackFade = oTrack.length / 3
+        switch(true) {
+            case oTrack.length < 1:         iTrackFade = 0; break;
+            case oTrack.length < iHalfFade: iTrackFade = iHalfFade * .25; break;
+            case oTrack.length < iFadeTime: iTrackFade = iFadeTime * .25; break;
         }
 
         oMixer.addTrack(
