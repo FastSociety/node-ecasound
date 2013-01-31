@@ -11,8 +11,8 @@
         {
             name:   'sample0',
             audio:  'other.wav',
-            start:  1,
-            length: 5
+            start:  3,
+            length: 4
         },
         {
             name:   'sample1',
@@ -123,3 +123,8 @@
 
     console.log('ecasound', oMixer.consoleOutput().command.join(' ').replace('whatever-output-filename-is', 'test2'));
     console.log(oMixer.consoleMixerOutput());
+
+    oMixer.saveAs('test2.wav', function() {
+        console.log('done');
+        process.exit();
+    });
