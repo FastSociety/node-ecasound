@@ -8,5 +8,5 @@ Homepage: https://github.com/FastSociety/node-ecasound
 
 Package: node-ecasound
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, ecasound
 Description: Nodejs ecasound module
